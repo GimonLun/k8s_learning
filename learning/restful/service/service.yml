@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: restful-example-service
+spec:
+  selector:
+    app: restful-example
+  type: ClusterIP
+  ports:
+    - name: restful-example-service
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

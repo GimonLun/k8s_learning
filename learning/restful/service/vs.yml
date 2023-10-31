@@ -1,0 +1,19 @@
+# See more at https://istio.io/docs/reference/config/networking/virtual-service/
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: example-vs
+spec:
+  gateways:
+    - istio-system/test-gateway
+  hosts:
+    - learning-restful-example.service.local
+  http:
+    - match:
+        - uri:
+            prefix: /api
+      route:
+        - destination:
+            host: restful-example-service.example-namespace
+            port:
+              number: 3000

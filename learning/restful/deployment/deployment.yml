@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restful-example-deployment
+  labels:
+    app: restful-example
+spec:
+  selector:
+    matchLabels:
+      app: restful-example
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: restful-example
+    spec:
+      containers:
+        - name: restful-example-image
+          image: gimon/rest-learning:latest
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 3000
+      restartPolicy: Always
